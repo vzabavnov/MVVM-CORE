@@ -1,4 +1,5 @@
 WinFormsMVVM
 ============
 
-WinForms MVVM
+This is a framework to support MVVM (Model View ViewModel) in Windows Forms
+

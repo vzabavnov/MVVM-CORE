@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{641DB7D0-303A-4E27-AE9E-62E52E85B934}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zabavnov.WFMVVM</RootNamespace>
+    <AssemblyName>wfmvvm</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BindableProperty.cs" />
+    <Compile Include="Binders\BinderExtensions.cs" />
+    <Compile Include="Binders\BoundaryBinder.cs" />
+    <Compile Include="Binders\BoundaryBinderStrategy.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\Commands.cs" />
+    <Compile Include="Commands\EnablableCommand.cs" />
+    <Compile Include="Commands\FuncCommand.cs" />
+    <Compile Include="Commands\IFuncCommand.cs" />
+    <Compile Include="Binders\ControlBinders.cs" />
+    <Compile Include="DataConverter.cs" />
+    <Compile Include="DataProviders\DataProviderExtensions.cs" />
+    <Compile Include="Binders\DateTimePickerBinders.cs" />
+    <Compile Include="DataProviders\ParallelDataProvider.cs" />
+    <Compile Include="DataProviders\ParallelNotifiable.cs" />
+    <Compile Include="DataProviders\WeakDataProvider.cs" />
+    <Compile Include="DateTimeWithRange.cs" />
+    <Compile Include="Dispatchers\DirectDispatcher.cs" />
+    <Compile Include="Dispatchers\Dispatcher.cs" />
+    <Compile Include="IBindableProperty.cs" />
+    <Compile Include="IDateTimeWithRange.cs" />
+    <Compile Include="Dispatchers\IDispatcher.cs" />
+    <Compile Include="IPropertyBinder.cs" />
+    <Compile Include="Converters\NullableConverter.cs" />
+    <Compile Include="Dispatchers\PDispatcher.cs" />
+    <Compile Include="Binders\PropertyBinder.cs" />
+    <Compile Include="SimpleBindableProperty.cs" />
+    <Compile Include="DataProviders\SimpleDataProvider.cs" />
+    <Compile Include="DataProviders\DataProviderStatus.cs" />
+    <Compile Include="Dispatchers\UDispatcher.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Converters\IDataConverter.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="IDataProvider.cs" />
+    <Compile Include="INotifiable.cs" />
+    <Compile Include="DataProviders\LazyDataProvider.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="ModelBase.cs" />
+    <Compile Include="NotifiableEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataProviders\SimpleDataProviderStatus.cs" />
+    <Compile Include="SimpleNotifiable.cs" />
+    <Compile Include="Visibility.cs" />
+    <Compile Include="WeakReference.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

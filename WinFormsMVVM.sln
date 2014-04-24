@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsMVVM", "Source\WinFormsMVVM.csproj", "{641DB7D0-303A-4E27-AE9E-62E52E85B934}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{641DB7D0-303A-4E27-AE9E-62E52E85B934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{641DB7D0-303A-4E27-AE9E-62E52E85B934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{641DB7D0-303A-4E27-AE9E-62E52E85B934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{641DB7D0-303A-4E27-AE9E-62E52E85B934}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
