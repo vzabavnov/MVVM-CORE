@@ -126,6 +126,11 @@ namespace Zabavnov.WFMVVM
             return EnabledBinder.BindTo(ctrl);
         }
 
+        public static IBindableProperty<T, Color> BackColorProperty<T>(this T ctrl) where T : Control
+        {
+            return BackColorBinder.BindTo(ctrl);
+        }
+
         #endregion
     }
 }

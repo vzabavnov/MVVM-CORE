@@ -49,6 +49,7 @@
     <Compile Include="Binders\BinderExtensions.cs" />
     <Compile Include="Binders\BoundaryBinder.cs" />
     <Compile Include="Binders\BoundaryBinderStrategy.cs" />
+    <Compile Include="Binders\TrackBarBinder.cs" />
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Commands\EnablableCommand.cs" />

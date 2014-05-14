@@ -47,15 +47,16 @@ namespace Zabavnov.WFMVVM
         }
 
         /// <summary>
-        ///     bind model to control
+        /// Bind model to control
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <typeparam name="TControl"></typeparam>
-        /// <typeparam name="TProperty"></typeparam>
-        /// <param name="model"></param>
-        /// <param name="propertyLambda"></param>
-        /// <param name="property"></param>
-        /// <param name="direction"></param>
+        /// <typeparam name="TModel">The model</typeparam>
+        /// <typeparam name="TControl">The type of the control to bind model to.</typeparam>
+        /// <typeparam name="TProperty">The type of model's property to bind control to</typeparam>
+        /// <param name="model">The instance of the model</param>
+        /// <param name="propertyLambda">the lambda expression for property of model to bind control to</param>
+        /// <param name="property">The <see cref="IBindableProperty{TControl,TProperty}"/> to bind model's property to</param>
+        /// <param name="direction">The direction of binding. when value is <see cref=" BindingDirection.OneWay"/> only changes from model promoted to control. 
+        /// If need to accept changes from control to the mode then <see cref="BindingDirection.TwoWay"/> need to be used</param>
         [DebuggerStepThrough]
         public static void BindTo<TModel, TControl, TProperty>(this TModel model, Expression<Func<TModel, TProperty>> propertyLambda,
                                                                IBindableProperty<TControl, TProperty> property, BindingDirection direction = BindingDirection.OneWay)
