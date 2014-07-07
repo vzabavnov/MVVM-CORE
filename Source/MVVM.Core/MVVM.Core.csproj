@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B51214C6-1A8B-49B8-8A52-97668B94A0D4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zabavnov.MVVM</RootNamespace>
+    <AssemblyName>MVVM.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>True</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>True</CodeContractsRedundantAssumptions>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>True</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>True</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>True</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestObjectInvariants>True</CodeContractsSuggestObjectInvariants>
+    <CodeContractsSuggestReadonly>True</CodeContractsSuggestReadonly>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsFailBuildOnWarnings>True</CodeContractsFailBuildOnWarnings>
+    <CodeContractsBeingOptimisticOnExternal>True</CodeContractsBeingOptimisticOnExternal>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BindableProperty.cs" />
+    <Compile Include="Contracts\BindablePropertyContract.cs" />
+    <Compile Include="Binders\Binder.cs" />
+    <Compile Include="Binders\BinderExtensions.cs" />
+    <Compile Include="Contracts\BindingInfoContract.cs" />
+    <Compile Include="Binders\BindingOneWayToSource.cs" />
+    <Compile Include="Binders\BindingTwoWay.cs" />
+    <Compile Include="Binders\BindingMode.cs" />
+    <Compile Include="Binders\BindingOneTime.cs" />
+    <Compile Include="Binders\BindingInfoBase.cs" />
+    <Compile Include="Binders\BindingOneWay.cs" />
+    <Compile Include="Binders\IBindingInfo.cs" />
+    <Compile Include="Binders\PropertyBinder.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\Delegates.cs" />
+    <Compile Include="Commands\EnablableCommand.cs" />
+    <Compile Include="Commands\ExternalCommand.cs" />
+    <Compile Include="Commands\ExternalFuncCommand.cs" />
+    <Compile Include="Commands\FuncCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\IExternalCommand.cs" />
+    <Compile Include="Commands\IExternalFuncCommand.cs" />
+    <Compile Include="Commands\IFuncCommand.cs" />
+    <Compile Include="Converters\IDataConverter.cs" />
+    <Compile Include="Converters\NullableConverter.cs" />
+    <Compile Include="Converters\DataConverter.cs" />
+    <Compile Include="Contracts\DataProviderContract.cs" />
+    <Compile Include="DataProviders\DataProviderExtensions.cs" />
+    <Compile Include="DataProviders\DataProviderStatus.cs" />
+    <Compile Include="DataProviders\LazyDataProvider.cs" />
+    <Compile Include="DataProviders\ParallelDataProvider.cs" />
+    <Compile Include="DataProviders\ParallelNotifiable.cs" />
+    <Compile Include="DataProviders\SimpleDataProvider.cs" />
+    <Compile Include="DataProviders\SimpleDataProviderStatus.cs" />
+    <Compile Include="DataProviders\WeakDataProvider.cs" />
+    <Compile Include="Dispatchers\DispatcherContract.cs" />
+    <Compile Include="ExpressionExtensions.cs" />
+    <Compile Include="PropertyManager\IPropertyConfig.cs" />
+    <Compile Include="PropertyManager\IPropertyManager.cs" />
+    <Compile Include="PropertyManager\PropertyConfig.cs" />
+    <Compile Include="Contracts\PropertyConfigContract.cs" />
+    <Compile Include="Contracts\PropertyManagerContact.cs" />
+    <Compile Include="Special\BoundaryBinder.cs" />
+    <Compile Include="Special\BoundaryBinderStrategy.cs" />
+    <Compile Include="Special\DateTimeWithRange.cs" />
+    <Compile Include="Dispatchers\DirectDispatcher.cs" />
+    <Compile Include="Dispatchers\Dispatcher.cs" />
+    <Compile Include="Dispatchers\IDispatcher.cs" />
+    <Compile Include="Dispatchers\PDispatcher.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="IBindableProperty.cs" />
+    <Compile Include="IDataProvider.cs" />
+    <Compile Include="Special\IDateTimeWithRange.cs" />
+    <Compile Include="INotifiable.cs" />
+    <Compile Include="IPropertyBinder.cs" />
+    <Compile Include="PropertyManager\IPropertyInfo.cs" />
+    <Compile Include="ModelBase.cs" />
+    <Compile Include="NotifiableEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyManager\PropertyInfo.cs" />
+    <Compile Include="PropertyManager\PropertyManager.cs" />
+    <Compile Include="SimpleBindableProperty.cs" />
+    <Compile Include="SimpleNotifiable.cs" />
+    <Compile Include="Visibility.cs" />
+    <Compile Include="WeakReference.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

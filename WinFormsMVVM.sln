@@ -1,11 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsMVVM", "src\WinFormsMVVM.csproj", "{641DB7D0-303A-4E27-AE9E-62E52E85B934}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM.Core", "Source\MVVM.Core\MVVM.Core.csproj", "{B51214C6-1A8B-49B8-8A52-97668B94A0D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsMVVM.Tests", "test\WinFormsMVVM.Tests.csproj", "{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM.WinForms", "Source\MVVM.WinForms\MVVM.WinForms.csproj", "{641DB7D0-303A-4E27-AE9E-62E52E85B934}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B51214C6-1A8B-49B8-8A52-97668B94A0D4} = {B51214C6-1A8B-49B8-8A52-97668B94A0D4}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMSample", "MVVMSample\MVVMSample.csproj", "{570CCEF2-D595-4A31-A883-4AC96B1E1FFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM.Sample", "Sample\MVVM.Sample.csproj", "{570CCEF2-D595-4A31-A883-4AC96B1E1FFC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B51214C6-1A8B-49B8-8A52-97668B94A0D4} = {B51214C6-1A8B-49B8-8A52-97668B94A0D4}
+		{641DB7D0-303A-4E27-AE9E-62E52E85B934} = {641DB7D0-303A-4E27-AE9E-62E52E85B934}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM.Core.Tests", "Tests\MVVM.Core.Tests\MVVM.Core.Tests.csproj", "{C0EB4D2E-B4CF-446F-98AD-E2854AE85A17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM.WinForms.Tests", "Tests\MVVM.WinForms.Tests\MVVM.WinForms.Tests.csproj", "{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +24,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B51214C6-1A8B-49B8-8A52-97668B94A0D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51214C6-1A8B-49B8-8A52-97668B94A0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51214C6-1A8B-49B8-8A52-97668B94A0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51214C6-1A8B-49B8-8A52-97668B94A0D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{641DB7D0-303A-4E27-AE9E-62E52E85B934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{641DB7D0-303A-4E27-AE9E-62E52E85B934}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{641DB7D0-303A-4E27-AE9E-62E52E85B934}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{641DB7D0-303A-4E27-AE9E-62E52E85B934}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{570CCEF2-D595-4A31-A883-4AC96B1E1FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{570CCEF2-D595-4A31-A883-4AC96B1E1FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{570CCEF2-D595-4A31-A883-4AC96B1E1FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{570CCEF2-D595-4A31-A883-4AC96B1E1FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0EB4D2E-B4CF-446F-98AD-E2854AE85A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0EB4D2E-B4CF-446F-98AD-E2854AE85A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0EB4D2E-B4CF-446F-98AD-E2854AE85A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0EB4D2E-B4CF-446F-98AD-E2854AE85A17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52CD6824-AF20-45DA-9EF6-F81F9B2ECB78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

@@ -174,3 +174,4 @@ UpgradeLog*.htm
 FakesAssemblies/
 Source/WinFormsMVVM.csproj.DotSettings
 src/WinFormsMVVM.csproj.DotSettings
+*.DotSettings
