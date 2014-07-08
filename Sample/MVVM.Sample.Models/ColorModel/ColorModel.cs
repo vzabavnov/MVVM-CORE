@@ -1,12 +1,10 @@
-﻿namespace MVVMSample.ColorModel
+﻿using Zabavnov.MVVM;
+
+namespace MVVM.Sample.Models.ColorModel
 {
-    using System.Drawing;
-
-    using Zabavnov.MVVM;
-
     /// <summary>
     /// </summary>
-    internal class ColorModel : ModelBase<ColorModel>, IColorModel
+    public class ColorModel : ModelBase<ColorModel>, IColorModel
     {
         static bool CheckValue(int value)
         {

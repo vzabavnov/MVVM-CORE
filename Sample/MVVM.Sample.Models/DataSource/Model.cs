@@ -32,9 +32,9 @@ using Zabavnov.MVVM;
 
 #endregion
 
-namespace MVVMSample.DataSource
+namespace MVVM.Sample.Models.DataSource
 {
-    internal class Model : ModelBase<Model>, IModel
+    public class Model : ModelBase<Model>, IModel
     {
         #region Static Fields
 

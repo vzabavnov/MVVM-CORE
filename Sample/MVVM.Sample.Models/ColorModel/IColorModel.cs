@@ -1,8 +1,7 @@
-﻿namespace MVVMSample.ColorModel
-{
-    using System.ComponentModel;
-    using System.Drawing;
+﻿using System.ComponentModel;
 
+namespace MVVM.Sample.Models.ColorModel
+{
     public interface IColorModel: INotifyPropertyChanged
     {
         int R { get; set; }

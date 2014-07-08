@@ -26,13 +26,18 @@
 #region Usings
 
 using System.ComponentModel;
-using System.Windows.Forms;
 using Zabavnov.MVVM;
 
 #endregion
 
-namespace MVVMSample.YesNoModel
+namespace MVVM.Sample.Models.YesNoModel
 {
+    public enum DialogResult
+    {
+        Yes,
+        No
+    }
+
     public interface IYesNoModel : INotifyPropertyChanged
     {
         #region Public Properties

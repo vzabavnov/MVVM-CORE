@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using MVVM.Sample.Models.ColorModel;
 
 namespace MVVMSample
 {
-    using MVVMSample.ColorModel;
-    using MVVMSample.YesNoModel;
     using Zabavnov.MVVM;
     using Zabavnov.Windows.Forms.MVVM;
 
@@ -13,7 +12,7 @@ namespace MVVMSample
     {
         #region Color Model
 
-        private readonly IColorModel _colorModel = new ColorModel.ColorModel();
+        private readonly IColorModel _colorModel = new ColorModel();
 
         public IColorModel ColorModel
         {

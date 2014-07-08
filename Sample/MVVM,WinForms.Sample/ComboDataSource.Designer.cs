@@ -1,4 +1,4 @@
-﻿namespace MVVMSample.DataSource
+﻿namespace MVVMSample
 {
     partial class ComboDataSource
     {

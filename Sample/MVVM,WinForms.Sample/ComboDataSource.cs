@@ -28,10 +28,11 @@
 using System.Windows.Forms;
 using Zabavnov.MVVM;
 using Zabavnov.Windows.Forms.MVVM;
+using MVVM.Sample.Models.DataSource;
 
 #endregion
 
-namespace MVVMSample.DataSource
+namespace MVVMSample
 {
     public partial class ComboDataSource : UserControl
     {

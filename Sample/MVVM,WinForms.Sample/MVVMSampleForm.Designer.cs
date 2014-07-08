@@ -31,8 +31,8 @@
             System.Windows.Forms.GroupBox groupBox1;
             System.Windows.Forms.GroupBox groupBox2;
             this._yesNoBtn = new System.Windows.Forms.Button();
-            this.colorCtrl1 = new MVVMSample.ColorModel.ColorCtrl();
-            this.comboDataSource1 = new MVVMSample.DataSource.ComboDataSource();
+            this.colorCtrl1 = new ColorCtrl();
+            this.comboDataSource1 = new ComboDataSource();
             groupBox1 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox1.SuspendLayout();
@@ -101,8 +101,8 @@
         #endregion
 
         private System.Windows.Forms.Button _yesNoBtn;
-        private ColorModel.ColorCtrl colorCtrl1;
-        private DataSource.ComboDataSource comboDataSource1;
+        private ColorCtrl colorCtrl1;
+        private ComboDataSource comboDataSource1;
     }
 }
 

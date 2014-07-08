@@ -1,9 +1,10 @@
-﻿namespace MVVMSample.YesNoModel
+﻿using Zabavnov.MVVM;
+
+namespace MVVM.Sample.Models.YesNoModel
 {
     #region Usings
 
-    using System.Windows.Forms;
-    using Zabavnov.MVVM;
+    
 
     #endregion
 

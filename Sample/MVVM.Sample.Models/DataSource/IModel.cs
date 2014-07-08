@@ -16,22 +16,45 @@
 //    limitations under the License.
 // 
 //  ****************************************************************************
-//  File Name: DataItem.cs.
-//  Created: 2014/07/07/4:08 PM.
-//  Modified: 2014/07/07/4:08 PM.
+//  File Name: IModel.cs.
+//  Created: 2014/07/07/4:07 PM.
+//  Modified: 2014/07/07/4:09 PM.
 //  ****************************************************************************
 
 #endregion
 
-namespace MVVMSample.DataSource
+#region Usings
+
+using System.Collections.Generic;
+using System.ComponentModel;
+
+#endregion
+
+namespace MVVM.Sample.Models.DataSource
 {
-    internal class DataItem
+    public enum Filter
+    {
+        Unselected,
+        All,
+        Even,
+        Odd
+    }
+
+    public interface IModel : INotifyPropertyChanged
     {
         #region Public Properties
 
-        public int ID { get; set; }
+        bool AllItems { get; set; }
 
-        public string Name { get; set; }
+        bool EvenItems { get; set; }
+
+        bool OddItems { get; set; }
+
+        DataItem SelectedItem { get; set; }
+
+        IList<DataItem> Values { get; }
+
+        Filter Filter { get; set; }
 
         #endregion
     }

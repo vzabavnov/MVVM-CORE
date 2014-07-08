@@ -1,4 +1,4 @@
-﻿namespace MVVMSample.ColorModel
+﻿namespace MVVMSample
 {
     partial class ColorCtrl
     {

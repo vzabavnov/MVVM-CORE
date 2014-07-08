@@ -1,12 +1,11 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
+using MVVM.Sample.Models.YesNoModel;
+using Zabavnov.MVVM;
+using Zabavnov.Windows.Forms.MVVM;
 
-namespace MVVMSample.YesNoModel
+namespace MVVMSample
 {
-    using System;
-    using System.ComponentModel;
-    using Zabavnov.MVVM;
-    using Zabavnov.Windows.Forms.MVVM;
-
     public partial class YesNoDlg : Form
     {
         readonly IYesNoModel _model = new YesNoModel();

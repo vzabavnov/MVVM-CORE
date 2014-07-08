@@ -45,43 +45,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorModel\ColorCtrl.cs">
+    <Compile Include="ColorCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ColorModel\ColorCtrl.Designer.cs">
+    <Compile Include="ColorCtrl.Designer.cs">
       <DependentUpon>ColorCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ColorModel\ColorModel.cs" />
-    <Compile Include="DataSource\ComboDataSource.cs">
+    <Compile Include="ComboDataSource.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DataSource\ComboDataSource.Designer.cs">
+    <Compile Include="ComboDataSource.Designer.cs">
       <DependentUpon>ComboDataSource.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSource\DataItem.cs" />
-    <Compile Include="DataSource\IModel.cs" />
-    <Compile Include="DataSource\Model.cs" />
-    <Compile Include="YesNoModel\IYesNoModel.cs" />
     <Compile Include="MVVMSampleForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MVVMSampleForm.Designer.cs">
       <DependentUpon>MVVMSampleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ColorModel\IColorModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YesNoModel\YesNoDlg.cs">
+    <Compile Include="YesNoDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="YesNoModel\YesNoDlg.Designer.cs">
+    <Compile Include="YesNoDlg.Designer.cs">
       <DependentUpon>YesNoDlg.cs</DependentUpon>
     </Compile>
-    <Compile Include="YesNoModel\YesNoModel.cs" />
-    <EmbeddedResource Include="ColorModel\ColorCtrl.resx">
+    <EmbeddedResource Include="ColorCtrl.resx">
       <DependentUpon>ColorCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataSource\ComboDataSource.resx">
+    <EmbeddedResource Include="ComboDataSource.resx">
       <DependentUpon>ComboDataSource.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVMSampleForm.resx">
@@ -96,7 +89,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="YesNoModel\YesNoDlg.resx">
+    <EmbeddedResource Include="YesNoDlg.resx">
       <DependentUpon>YesNoDlg.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -110,15 +103,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Source\MVVM.Core\MVVM.Core.csproj">
+    <ProjectReference Include="..\MVVM.Sample.Models\MVVM.Sample.Models.csproj">
+      <Project>{C644EA6E-BBB4-4188-9843-A62F64E36145}</Project>
+      <Name>MVVM.Sample.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Source\MVVM.Core\MVVM.Core.csproj">
       <Project>{B51214C6-1A8B-49B8-8A52-97668B94A0D4}</Project>
       <Name>MVVM.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Source\MVVM.WinForms\MVVM.WinForms.csproj">
+    <ProjectReference Include="..\..\Source\MVVM.WinForms\MVVM.WinForms.csproj">
       <Project>{641DB7D0-303A-4E27-AE9E-62E52E85B934}</Project>
       <Name>MVVM.WinForms</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

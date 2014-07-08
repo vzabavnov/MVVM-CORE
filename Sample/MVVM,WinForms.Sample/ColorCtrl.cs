@@ -25,14 +25,15 @@
 
 #region Usings
 
-using System.Diagnostics.Contracts;
 using System.Windows.Forms;
+using MVVM.Sample.Models;
+using MVVM.Sample.Models.ColorModel;
 using Zabavnov.MVVM;
 using Zabavnov.Windows.Forms.MVVM;
 
 #endregion
 
-namespace MVVMSample.ColorModel
+namespace MVVMSample
 {
     /// <summary>
     /// </summary>
@@ -79,7 +80,10 @@ namespace MVVMSample.ColorModel
             ColorModel.BindTo(z => z.R, trackR.ValueProperty());
             ColorModel.BindTo(z => z.G, trackG.ValueProperty());
             ColorModel.BindTo(z => z.B, trackB.ValueProperty());
-            ColorModel.BindTo(z => z.Color, colorPanel.BackColorProperty());
+            ColorModel.BindTo(z => z.Color, colorPanel.BackColorProperty(), 
+                new DataConverter<Color, System.Drawing.Color>(
+                    color => System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B),
+                    color => Color.FromArgb(color.R,color.G, color.B)), BindingMode.Default);
         }
 
         #endregion

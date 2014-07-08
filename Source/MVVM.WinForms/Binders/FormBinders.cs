@@ -1,16 +1,26 @@
-﻿namespace Zabavnov.Windows.Forms.MVVM
-{
-    using System;
-    using System.ComponentModel;
-    using System.Windows.Forms;
-    using Zabavnov.MVVM;
+﻿using System;
+using System.ComponentModel;
+using System.Windows.Forms;
+using Zabavnov.MVVM;
 
+namespace Zabavnov.Windows.Forms.MVVM
+{
     public static class FormBinders
     {
-        class CloseCommandBindingData<T> where T: Form
+        public static void BindCommandToClose<TModel, TControl>(this TModel model,
+            Func<TModel, IExternalCommand> commandSelector, TControl control)
+            where TControl : Form
         {
-            private readonly T _control;
+            var data = new CloseCommandBindingData<TControl>(control, commandSelector(model));
+            control.Closing += data.OnClosing;
+        }
+
+        private class CloseCommandBindingData<T> where T : Form
+        {
             private readonly IExternalCommand _command;
+            private readonly T _control;
+
+            private bool _fromAction;
 
             public CloseCommandBindingData(T control, IExternalCommand command)
             {
@@ -19,11 +29,9 @@
                 _command.Action = ExtAction;
             }
 
-            bool _fromAction;
-
             private bool ExtAction()
             {
-                var old = _fromAction;
+                bool old = _fromAction;
                 try
                 {
                     _fromAction = true;
@@ -41,13 +49,6 @@
                 if (!_fromAction)
                     args.Cancel = !_command.CanExecute();
             }
-        }
-
-        public static void BindCommandToClose<TModel, TControl>(this TModel model, Func<TModel, IExternalCommand> commandSelector, TControl control)
-            where TControl: Form
-        {
-            var data = new CloseCommandBindingData<TControl>(control, commandSelector(model));
-            control.Closing += data.OnClosing;
         }
     }
 }

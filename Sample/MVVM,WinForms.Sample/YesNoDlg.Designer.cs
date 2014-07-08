@@ -1,4 +1,4 @@
-﻿namespace MVVMSample.YesNoModel
+﻿namespace MVVMSample
 {
     partial class YesNoDlg
     {
