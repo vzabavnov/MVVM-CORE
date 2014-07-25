@@ -69,6 +69,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.XML" />
   </ItemGroup>
@@ -104,6 +105,7 @@
     <Compile Include="DataProviders\DataProviderExtensions.cs" />
     <Compile Include="DataProviders\DataProviderStatus.cs" />
     <Compile Include="DataProviders\LazyDataProvider.cs" />
+    <Compile Include="DataProviders\MemoryCacheProvider.cs" />
     <Compile Include="DataProviders\ParallelDataProvider.cs" />
     <Compile Include="DataProviders\ParallelNotifiable.cs" />
     <Compile Include="DataProviders\SimpleDataProvider.cs" />

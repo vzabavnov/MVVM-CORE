@@ -35,8 +35,6 @@ namespace Zabavnov.MVVM.Tests
 {
     internal class ProviderTests
     {
-        #region Public Methods and Operators
-
         [Fact]
         public void TestTransformationProvider()
         {
@@ -94,7 +92,5 @@ namespace Zabavnov.MVVM.Tests
             Assert.Equal(DataProviderStatus.Ready, trProviderStatus);
             Assert.Equal(DataProviderStatus.Ready, providerStatus);
         }
-
-        #endregion
     }
 }

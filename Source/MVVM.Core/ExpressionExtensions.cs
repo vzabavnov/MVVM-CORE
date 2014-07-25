@@ -148,6 +148,8 @@ namespace Zabavnov.MVVM
 
         public static void DettachActionFrom<TProperty>(this Action actionToAttach, Expression<Func<TProperty>> propertyLambda)
         {
+            Contract.Requires(propertyLambda != null);
+
             MemberInfo mi;
             var instance = GetPropertyContainer<INotifyPropertyChanged, TProperty>(propertyLambda, out mi)();
 
