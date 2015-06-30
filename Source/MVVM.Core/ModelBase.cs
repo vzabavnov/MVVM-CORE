@@ -18,7 +18,7 @@
 //  ****************************************************************************
 //  File Name: ModelBase.cs.
 //  Created: 2014/05/30/4:59 PM.
-//  Modified: 2014/06/13/10:41 AM.
+//  Modified: 2015/06/13/10:41 AM.
 //  ****************************************************************************
 
 #endregion
@@ -31,12 +31,13 @@ using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 
 #endregion
 
 namespace Zabavnov.MVVM
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// </summary>
     /// <typeparam name="T">
@@ -135,6 +136,44 @@ namespace Zabavnov.MVVM
                     dispatcher.Invoke(() => handler(this, args));
                 }
             }
+        }
+
+        /// <summary>
+        ///     Raise change event for specified property(s)
+        /// </summary>
+        /// <param name="propertyLambda"></param>
+        /// <param name="propertyLambdas"></param>
+        [DebuggerStepThrough]
+        protected void RaisePropertyChanged(Expression<Func<object>> propertyLambda,
+                                            params Expression<Func<object>>[] propertyLambdas)
+        {
+            Contract.Requires(propertyLambda != null);
+
+            RaisePropertyChanged(Dispatcher.DirectDispatcher, propertyLambda, propertyLambdas);
+        }
+
+        [DebuggerStepThrough]
+        protected void RaisePropertyChanged(IDispatcher dispatcher, Expression<Func<object>> propertyLambda,
+                                            params Expression<Func<object>>[] propertyLambdas)
+        {
+            Contract.Requires(dispatcher != null);
+            Contract.Requires(propertyLambda != null);
+
+            var handler = PropertyChanged;
+            if (handler != null)
+                RaisePropertyChanged(dispatcher,
+                    propertyLambdas.AddHead(propertyLambda).Select(z => new PropertyChangedEventArgs(z.GetPropertyName())));
+        }
+
+        [DebuggerStepThrough]
+        protected void RaisePropertyChanged(IDispatcher dispatcher, IEnumerable<PropertyChangedEventArgs> args)
+        {
+            Contract.Requires(dispatcher != null);
+            Contract.Requires(args != null);
+
+            var handler = this.PropertyChanged;
+            if (handler != null)
+                args.ForEach(z => dispatcher.Invoke(() => handler(this, z)));
         }
 
         /// <summary>
