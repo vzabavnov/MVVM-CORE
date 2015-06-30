@@ -38,6 +38,8 @@ using System.Runtime.CompilerServices;
 
 namespace Zabavnov.MVVM
 {
+    using System.Diagnostics;
+
     public static class ExpressionExtensions
     {
         #region Static Fields
@@ -252,6 +254,70 @@ namespace Zabavnov.MVVM
             return expression.Member;
         }
 
+        [Pure]
+        [DebuggerStepThrough]
+        public static MemberInfo GetMemberInfo<TProperty>(this Expression<Func<TProperty>> propertyLambda)
+        {
+            Contract.Requires(propertyLambda != null);
+            Contract.Ensures(Contract.Result<MemberInfo>() != null);
+
+            var body = propertyLambda.Body;
+            MemberExpression expression;
+            switch (body.NodeType)
+            {
+                case ExpressionType.Convert:
+                    expression = (MemberExpression)((UnaryExpression)body).Operand;
+                    break;
+                case ExpressionType.MemberAccess:
+                    expression = (MemberExpression)body;
+                    break;
+                default:
+                    throw new ArgumentException("Only property supported");
+            }
+
+            return expression.Member;
+        }
+
+        /// <summary>
+        /// get <see cref="PropertyInfo"/> from provided lambda expression
+        /// </summary>
+        /// <param name="propertyLambda"></param>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        [Pure]
+        [DebuggerStepThrough]
+        public static PropertyInfo GetPropertyInfo<TProperty>(this Expression<Func<TProperty>> propertyLambda)
+        {
+            var propInfo = GetMemberInfo(propertyLambda) as PropertyInfo;
+            if (propInfo == null) throw new ArgumentException(String.Format("Expression '{0}' refers to a field, not a property.", propertyLambda));
+
+            return propInfo;
+        }
+
+        /// <summary>
+        /// get <see cref="PropertyInfo"/> from provided lambda expression
+        /// </summary>
+        /// <param name="propertyLambda"></param>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        [Pure]
+        [DebuggerStepThrough]
+        public static PropertyInfo GetPropertyInfo<TSource, TProperty>(this Expression<Func<TSource, TProperty>> propertyLambda)
+        {
+            var propInfo = GetMemberInfo(propertyLambda) as PropertyInfo;
+            if (propInfo == null)
+                throw new ArgumentException(String.Format("Expression '{0}' refers to a field, not a property.", propertyLambda));
+
+            var type = typeof(TSource);
+            if (type.IsSubclassOf(propInfo.ReflectedType) || type.IsAssignableFrom(propInfo.ReflectedType))
+                return propInfo;
+            throw new ArgumentException(String.Format("Expression '{0}' refers to a property that is not from type {1}.", propertyLambda, type));
+        }
+
+
         public static MemberExpression GetPropertyExpression<T, TProperty>(
             this Expression<Func<T, TProperty>> propertyLambda,
             out MemberInfo memberInfo)
@@ -328,6 +394,26 @@ namespace Zabavnov.MVVM
             }
 
             throw new ArgumentException("Cannot write to specified member");
+        }
+
+        /// <summary>
+        /// Get the name of property provided by lambda expression
+        /// </summary>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <param name="propertyLambda"></param>
+        /// <returns></returns>
+        [Pure]
+        [DebuggerStepThrough]
+        public static string GetPropertyName<TProperty>(this Expression<Func<TProperty>> propertyLambda)
+        {
+            return propertyLambda.GetPropertyInfo().Name;
+        }
+
+        [Pure]
+        [DebuggerStepThrough]
+        public static string GetPropertyName<TSource>(this Expression<Func<TSource, object>> propertyLambda)
+        {
+            return propertyLambda.GetPropertyInfo().Name;
         }
 
         /// <summary>
