@@ -26,7 +26,6 @@
 #region Usings
 
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 
@@ -198,12 +197,52 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
+        public DateTime? Start
+        {
+            [DebuggerStepThrough]
+            get
+            {
+                Contract.Assume(this._startProperty.CanRead);
+
+                return this._startProperty.Value;
+            }
+
+            [DebuggerStepThrough]
+            set
+            {
+                Contract.Assume(this._startProperty.CanWrite);
+                this._startProperty.Value = value;
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        public DateTime? Value
+        {
+            [DebuggerStepThrough]
+            get
+            {
+                Contract.Requires(this._valueProperty.CanRead);
+
+                return this._valueProperty.Value;
+            }
+            [DebuggerStepThrough]
+            set
+            {
+                Contract.Requires(this._valueProperty.CanWrite);
+
+                this._valueProperty.Value = value;
+            }
+        }
+
+        /// <summary>
+        /// </summary>
         public DateTime? End
         {
             [DebuggerStepThrough]
             get
             {
-                Contract.Assume(_endProperty.CanRead);
+                Contract.Requires(_endProperty.CanRead);
 
                 return _endProperty.Value;
             }
@@ -211,7 +250,7 @@ namespace Zabavnov.MVVM
             [DebuggerStepThrough]
             set
             {
-                Contract.Assume(_endProperty.CanWrite);
+                Contract.Requires(_endProperty.CanWrite);
 
                 _endProperty.Value = value;
             }
@@ -238,45 +277,6 @@ namespace Zabavnov.MVVM
             }
         }
 
-        /// <summary>
-        /// </summary>
-        public DateTime? Start
-        {
-            [DebuggerStepThrough]
-            get
-            {
-                Contract.Assume(_startProperty.CanRead);
-
-                return _startProperty.Value;
-            }
-
-            [DebuggerStepThrough]
-            set
-            {
-                Contract.Assume(_startProperty.CanWrite);
-                _startProperty.Value = value;
-            }
-        }
-
-        /// <summary>
-        /// </summary>
-        public DateTime? Value
-        {
-            get
-            {
-                Contract.Assume(_valueProperty.CanRead);
-
-                return _valueProperty.Value;
-            }
-
-            set
-            {
-                Contract.Assume(_valueProperty.CanWrite);
-
-                _valueProperty.Value = value;
-            }
-        }
-
         #endregion
 
         #region Public Methods and Operators
@@ -296,17 +296,6 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        /// <param name="date">
-        /// </param>
-        /// <returns>
-        /// </returns>
-        public static implicit operator DateTimeWithRange<TControl>(DateTime date)
-        {
-            return new DateTimeWithRange<TControl> { Value = date == DateTime.MinValue ? (DateTime?)null : date };
-        }
-
-        /// <summary>
-        /// </summary>
         /// <param name="dwr">
         /// </param>
         /// <returns>
@@ -316,6 +305,17 @@ namespace Zabavnov.MVVM
             Contract.Requires(dwr != null);
 
             return dwr.Value;
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="date">
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public static implicit operator DateTimeWithRange<TControl>(DateTime date)
+        {
+            return new DateTimeWithRange<TControl> { Value = date == DateTime.MinValue ? (DateTime?)null : date };
         }
 
         /// <summary>
@@ -358,13 +358,13 @@ namespace Zabavnov.MVVM
             Contract.Requires(endProperty != null);
 
             _startProperty = startProperty;
-            _startProperty.PropertyChanged += OnPropertyChanged;
+            _startProperty.PropertyChanged += (sender, args) => RaisePropertyChanged(() => Start);
 
             _valueProperty = valueProperty;
-            _valueProperty.PropertyChanged += OnPropertyChanged;
+            _valueProperty.PropertyChanged += (sender, args) => RaisePropertyChanged(() => Value);
 
             _endProperty = endProperty;
-            _endProperty.PropertyChanged += OnPropertyChanged;
+            _endProperty.PropertyChanged += (sender, args) => RaisePropertyChanged(() => End);
 
             Validate();
         }
@@ -384,18 +384,6 @@ namespace Zabavnov.MVVM
             Contract.Invariant(_valueProperty != null);
             Contract.Invariant(_startProperty != null);
             Contract.Invariant(_endProperty != null);
-        }
-
-        /// <summary>
-        /// </summary>
-        /// <param name="sender">
-        /// </param>
-        /// <param name="args">
-        /// </param>
-        private void OnPropertyChanged(object sender, PropertyChangedEventArgs args)
-        {
-            Validate();
-            RaisePropertyChanged(args.PropertyName);
         }
 
         #endregion
