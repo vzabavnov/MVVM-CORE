@@ -10,13 +10,7 @@ namespace MVVMSample
     {
         readonly IYesNoModel _model = new YesNoModel();
 
-        public IYesNoModel Model 
-        { 
-            get
-            {
-                return _model;
-            }
-        }
+        public IYesNoModel Model => this._model;
 
         public YesNoDlg()
         {

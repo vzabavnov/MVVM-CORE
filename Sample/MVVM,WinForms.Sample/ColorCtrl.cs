@@ -41,10 +41,6 @@ namespace MVVMSample
     {
         #region Fields
 
-        /// <summary>
-        /// </summary>
-        private readonly IColorModel _colorModel = new ColorModel();
-
         #endregion
 
         #region Constructors and Destructors
@@ -64,10 +60,7 @@ namespace MVVMSample
 
         /// <summary>
         /// </summary>
-        public IColorModel ColorModel
-        {
-            get { return _colorModel; }
-        }
+        public IColorModel ColorModel { get; } = new ColorModel();
 
         #endregion
 

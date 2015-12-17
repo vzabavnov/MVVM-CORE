@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 using MVVM.Sample.Models.ColorModel;
 
@@ -12,12 +11,8 @@ namespace MVVMSample
     {
         #region Color Model
 
-        private readonly IColorModel _colorModel = new ColorModel();
+        public IColorModel ColorModel { get; } = new ColorModel();
 
-        public IColorModel ColorModel
-        {
-            get { return _colorModel; }
-        }
         #endregion
 
         readonly ICommand _openDlgCommand = new Command(true, () => new YesNoDlg().ShowDialog());
