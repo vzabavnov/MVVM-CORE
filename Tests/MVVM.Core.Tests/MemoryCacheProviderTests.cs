@@ -1,99 +1,105 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
 using System.Runtime.Caching;
-using System.Text;
 using System.Threading;
 using Xunit;
-using Xunit.Sdk;
+
 using Zabavnov.MVVM;
 
 namespace MVVM.Core.Tests
 {
     public class MemoryCacheProviderTests
     {
-        [Fact]
-        public void AbsoluteExpitationTest()
+        public class Test1
         {
-            Func<DateTime> dataProvider = () => DateTime.Now;
-
-            IDataProvider<DateTime> provider = new MemoryCacheProvider<DateTime>("DateTime", dataProvider, TimeSpan.FromSeconds(10), ObjectCache.NoSlidingExpiration);
-
-            var now = DateTime.Now;
-            var dt = provider.Data;
-
-            while(true)
+            [Fact]
+            public void AbsoluteExpitationTest()
             {
-                Thread.Sleep(100);
-                var d = provider.Data;
+                int count = 0;
+                Func<DateTime> dataProvider = () =>
+                    {
+                        count++;
+                        return DateTime.Now;
+                    };
 
-                if(d != dt)
+                IDataProvider<DateTime> provider = new MemoryCacheProvider<DateTime>("DateTime1", dataProvider, TimeSpan.FromSeconds(5), ObjectCache.NoSlidingExpiration);
+
+                var now = DateTime.Now;
+                var dt = provider.Data;
+
+                while(true)
                 {
-                    Assert.True(DateTime.Now - now >= TimeSpan.FromSeconds(10));
-                    break;
+                    Thread.Sleep(100);
+                    var d = provider.Data;
+
+                    if(d != dt)
+                    {
+                        Assert.True(DateTime.Now - now <= TimeSpan.FromSeconds(10));
+                        break;
+                    }
+
+                    Assert.Equal(1, count);
                 }
-                Assert.True(DateTime.Now - now < TimeSpan.FromSeconds(10));
             }
+            
         }
 
-        [Fact]
-        public void SlidingExpirationTest()
+        public class Test2
         {
-            Func<DateTime> dataProvider = () => DateTime.Now;
+            [Fact]
+            public void SlidingExpirationTest()
+            {
+                int count = 0;
+                Func<DateTime> dataProvider = () =>
+                    {
+                        count++;
+                        return DateTime.Now;
+                    };
 
-            IDataProvider<DateTime> provider = new MemoryCacheProvider<DateTime>("DateTime", dataProvider, ObjectCache.NoSlidingExpiration, TimeSpan.FromSeconds(2));
+                IDataProvider<DateTime> provider = new MemoryCacheProvider<DateTime>("DateTime2", dataProvider, ObjectCache.NoSlidingExpiration, TimeSpan.FromSeconds(2));
 
-            bool statusChanged = false;
-            provider.Status.Notify += args =>
+                var dt = provider.Data;
+
+                DateTime d = provider.Data;
+                for(int i = 0; i < 10; i++)
                 {
-                    Trace.Write(string.Format("Status changed from {0} to {1}", args.OldValue, args.Value));
-                    statusChanged = true;
-                };
-            
-            var dt = provider.Data;
-            statusChanged = false;
+                    Thread.Sleep(300);
+                    Assert.Equal(dt, d);
+                    Assert.Equal(1, count);
+                }
 
-            for(int i = 0; i < 20; i++)
-            {
-                Thread.Sleep(100);
-                var d = provider.Data;
-                Assert.Equal(DataProviderStatus.Ready, provider.Status.Value);
-                Assert.Equal(dt, d);
-                
+                Thread.Sleep(TimeSpan.FromSeconds(3));
+
+                d = provider.Data;
+                Assert.Equal(2, count);
+                Assert.NotEqual(dt, d);
             }
-
-            Assert.False(statusChanged);
-
-            Thread.Sleep(MemoryCache.Default.PollingInterval);
-            
-            Assert.True(statusChanged);
-
-            Assert.Equal(DataProviderStatus.NotReady, provider.Status.Value);
-            Assert.NotEqual(dt, provider.Data);
         }
 
-        [Fact]
-        public void ResetTest()
+        public class Test3
         {
-            Func<DateTime> dataProvider = () => DateTime.Now;
-
-            IDataProvider<DateTime> provider = new MemoryCacheProvider<DateTime>("DateTime", dataProvider, ObjectCache.NoSlidingExpiration, TimeSpan.FromSeconds(20));
-            
-            var dt = provider.Data;
-
-            for (int i = 0; i < 20; i++)
+            [Fact]
+            public void ResetTest()
             {
-                Thread.Sleep(500);
-                var d = provider.Data;
-                Assert.Equal(dt, d);
-            }
-            Assert.Equal(DataProviderStatus.Ready, provider.Status.Value);
-            provider.Reset();
-            Assert.Equal(DataProviderStatus.NotReady, provider.Status.Value);
+                Func<DateTime> dataProvider = () => DateTime.Now;
 
-            Assert.NotEqual(dt, provider.Data);
+                IDataProvider<DateTime> provider = new MemoryCacheProvider<DateTime>("DateTime3", dataProvider, ObjectCache.NoSlidingExpiration, TimeSpan.FromSeconds(20));
+            
+                var dt = provider.Data;
+
+                for (int i = 0; i < 20; i++)
+                {
+                    Thread.Sleep(500);
+                    var d = provider.Data;
+                    Assert.Equal(dt, d);
+                }
+                Assert.Equal(DataProviderStatus.Ready, provider.Status.Value);
+                provider.Reset();
+                Assert.Equal(DataProviderStatus.NotReady, provider.Status.Value);
+
+                Assert.NotEqual(dt, provider.Data);
+            }
+             
         }
+
     }
 }
