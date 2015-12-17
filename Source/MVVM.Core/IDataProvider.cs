@@ -2,6 +2,8 @@
 
 namespace Zabavnov.MVVM
 {
+    using Zabavnov.MVVM.Contracts;
+
     /// <summary>
     ///     declare the data provider.
     /// </summary>

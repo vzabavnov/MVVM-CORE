@@ -24,10 +24,7 @@ namespace Zabavnov.MVVM
             SetPropertyValue();
         }
 
-        public override BindingMode Direction
-        {
-            get { return BindingMode.OneTime;}
-        }
+        public override BindingMode Direction => BindingMode.OneTime;
 
         protected override void SetProperty(IBindableProperty<TControl, TControlProperty> property)
         {

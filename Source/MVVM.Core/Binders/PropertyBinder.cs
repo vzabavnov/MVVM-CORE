@@ -136,17 +136,11 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public bool CanRead
-        {
-            get { return Getter != null; }
-        }
+        public bool CanRead => Getter != null;
 
         /// <summary>
         /// </summary>
-        public bool CanWrite
-        {
-            get { return Setter != null; }
-        }
+        public bool CanWrite => Setter != null;
 
         /// <summary>
         /// </summary>
@@ -154,7 +148,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public string PropertyName { get; private set; }
+        public string PropertyName { get; }
 
         /// <summary>
         /// </summary>

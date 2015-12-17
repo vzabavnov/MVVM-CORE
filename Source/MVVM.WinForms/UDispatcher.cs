@@ -14,7 +14,6 @@
     public class UDispatcher : Dispatcher
     {
         private static readonly WindowsFormsSynchronizationContext _ctx = new WindowsFormsSynchronizationContext();
-        private readonly object _syncObj;
 
         /// <summary>
         /// </summary>
@@ -23,13 +22,10 @@
         [DebuggerStepThrough]
         public UDispatcher(object syncObj = null)
         {
-            _syncObj = syncObj ?? new object();
+            this.SyncObject = syncObj ?? new object();
         }
 
-        protected override object SyncObject
-        {
-            [DebuggerStepThrough] get { return _syncObj; }
-        }
+        protected override object SyncObject { get; }
 
         [DebuggerStepThrough]
         protected override void InvokeAction(Action actionToInvoke)

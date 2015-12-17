@@ -75,13 +75,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public INotifiable<DataProviderStatus> Status
-        {
-            get
-            {
-                return _status;
-            }
-        }
+        public INotifiable<DataProviderStatus> Status => _status;
 
         #endregion
 
@@ -98,10 +92,7 @@ namespace Zabavnov.MVVM
         /// </summary>
         /// <returns>
         /// </returns>
-        public override string ToString()
-        {
-            return string.Format("LazyDataProvider: {0}", this.GetProviderStatus());
-        }
+        public override string ToString() => $"LazyDataProvider: {this.GetProviderStatus()}";
 
         #endregion
 

@@ -1,5 +1,4 @@
 using System.Diagnostics.Contracts;
-using System.Reflection;
 
 namespace Zabavnov.MVVM
 {

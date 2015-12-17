@@ -77,20 +77,10 @@ namespace Zabavnov.MVVM
 
         public Func<TProperty> Getter { get; set; }
 
-        public bool HasChanged
-        {
-            get
-            {
-                return !Comparer.Equals(Value, OriginalValue);
-            }
-        }
+        public bool HasChanged => !Comparer.Equals(Value, OriginalValue);
 
-        public string Name
-        {
-            [DebuggerStepThrough]
-            get { return _name; }
-        }
-
+        public string Name => _name;
+        
         public TProperty OriginalValue { get; private set; }
 
         public Action<TProperty> Setter { get; set; }
@@ -134,8 +124,7 @@ namespace Zabavnov.MVVM
 
         protected virtual void OnChanged(IPropertyInfo obj)
         {
-            if(Changed != null)
-                Changed(obj);
+            Changed?.Invoke(obj);
         }
 
         #endregion

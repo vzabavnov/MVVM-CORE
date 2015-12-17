@@ -27,11 +27,10 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
+        /// <param name="model">The model</param>
         /// <param name="propertyInfo">
         /// </param>
         /// <param name="modelGetter">
-        /// </param>
-        /// <param name="modelSetter">
         /// </param>
         /// <param name="property">
         /// </param>
@@ -61,10 +60,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public override BindingMode Direction
-        {
-            get { return BindingMode.OneWay; }
-        }
+        public override BindingMode Direction => BindingMode.OneWay;
 
         #endregion
 

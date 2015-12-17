@@ -126,10 +126,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public PropertyInfo ModelPropertyInfo
-        {
-            get { return _modelPropertyInfo; }
-        }
+        public PropertyInfo ModelPropertyInfo => this._modelPropertyInfo;
 
         #endregion
 

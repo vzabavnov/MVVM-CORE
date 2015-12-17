@@ -57,10 +57,7 @@ namespace Zabavnov.MVVM
             set { _cacheProvider = value; }
         }
 
-        public ObjectCache Cache
-        {
-            get { return _cache ?? (_cache = CacheProvider()); }
-        }
+        public ObjectCache Cache => _cache ?? (_cache = CacheProvider());
 
         #region Constructors and Destructors
 
@@ -138,10 +135,7 @@ namespace Zabavnov.MVVM
         /// <summary>
         ///     The status of provider
         /// </summary>
-        public INotifiable<DataProviderStatus> Status
-        {
-            get { return _status; }
-        }
+        public INotifiable<DataProviderStatus> Status => _status;
 
         #endregion
 
@@ -154,8 +148,7 @@ namespace Zabavnov.MVVM
         {
             lock(_syncObj)
             {
-                if(_resetAction != null)
-                    _resetAction();
+                _resetAction?.Invoke();
             }
         }
 
@@ -203,10 +196,7 @@ namespace Zabavnov.MVVM
             /// <returns>
             ///     The identifier for a change-monitor instance.
             /// </returns>
-            public override string UniqueId
-            {
-                get { return _memoryCacheProvider._monitorUniqueID; }
-            }
+            public override string UniqueId => _memoryCacheProvider._monitorUniqueID;
 
             /// <summary>
             ///     Releases all managed and unmanaged resources and any references to the

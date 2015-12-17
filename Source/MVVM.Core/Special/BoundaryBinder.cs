@@ -44,13 +44,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public IDateTimeWithRange Lower
-        {
-            get
-            {
-                return _lower;
-            }
-        }
+        public IDateTimeWithRange Lower => _lower;
 
         /// <summary>
         /// </summary>
@@ -58,13 +52,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public IDateTimeWithRange Upper
-        {
-            get
-            {
-                return _upper;
-            }
-        }
+        public IDateTimeWithRange Upper => _upper;
 
         #endregion
 

@@ -222,16 +222,16 @@ namespace Zabavnov.MVVM
             [DebuggerStepThrough]
             get
             {
-                Contract.Requires(this._valueProperty.CanRead);
+                Contract.Assert(_valueProperty.CanRead);
 
-                return this._valueProperty.Value;
+                return _valueProperty.Value;
             }
             [DebuggerStepThrough]
             set
             {
-                Contract.Requires(this._valueProperty.CanWrite);
+                Contract.Assert(_valueProperty.CanWrite);
 
-                this._valueProperty.Value = value;
+                _valueProperty.Value = value;
             }
         }
 
@@ -242,7 +242,7 @@ namespace Zabavnov.MVVM
             [DebuggerStepThrough]
             get
             {
-                Contract.Requires(_endProperty.CanRead);
+                Contract.Assert(_endProperty.CanRead);
 
                 return _endProperty.Value;
             }
@@ -250,7 +250,7 @@ namespace Zabavnov.MVVM
             [DebuggerStepThrough]
             set
             {
-                Contract.Requires(_endProperty.CanWrite);
+                Contract.Assert(_endProperty.CanWrite);
 
                 _endProperty.Value = value;
             }
@@ -291,7 +291,7 @@ namespace Zabavnov.MVVM
         {
             Contract.Requires(dwr != null);
 
-            return dwr.Value.HasValue ? dwr.Value.Value : DateTime.MinValue;
+            return dwr.Value ?? DateTime.MinValue;
         }
 
         /// <summary>

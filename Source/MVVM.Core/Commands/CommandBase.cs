@@ -19,10 +19,7 @@ namespace Zabavnov.MVVM
             _status = new SimpleNotifiable<bool>(canExecute);
         }
 
-        public INotifiable<bool> Status
-        {
-            get { return _status; }
-        }
+        public INotifiable<bool> Status => _status;
 
         /// <summary>
         ///     Defines the method that determines whether the command can execute in its current state
@@ -54,10 +51,7 @@ namespace Zabavnov.MVVM
             _status = new SimpleNotifiable<bool>(canExecute);
         }
 
-        public INotifiable<bool> Status
-        {
-            get { return _status; }
-        }
+        public INotifiable<bool> Status => _status;
 
         public T Arg1 { get; set; }
 
@@ -91,10 +85,7 @@ namespace Zabavnov.MVVM
             _status = new SimpleNotifiable<bool>(canExecute);
         }
 
-        public INotifiable<bool> Status
-        {
-            get { return _status; }
-        }
+        public INotifiable<bool> Status => _status;
 
         public T1 Arg1 { get; set; }
         public T2 Arg2 { get; set; }

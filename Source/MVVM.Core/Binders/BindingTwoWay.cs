@@ -31,10 +31,7 @@ namespace Zabavnov.MVVM
 
         #region Overrides of BindingInfoBase<TModel,TControl,TModelProperty,TControlProperty>
 
-        public override BindingMode Direction
-        {
-            get { return BindingMode.TwoWay; }
-        }
+        public override BindingMode Direction => BindingMode.TwoWay;
 
         protected override void SetProperty(IBindableProperty<TControl, TControlProperty> property)
         {

@@ -21,10 +21,7 @@ namespace Zabavnov.MVVM
         /// <summary>
         ///     The current status of command
         /// </summary>
-        public INotifiable<bool> Status
-        {
-            get { return _command.Status; }
-        }
+        public INotifiable<bool> Status => _command.Status;
 
         /// <summary>
         ///     Defines the method to be called when the command is invoked

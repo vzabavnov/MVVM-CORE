@@ -54,21 +54,9 @@ namespace Zabavnov.MVVM
             _propertyInfo.Setter = setter;
         }
 
-        public Action<TProperty> Setter
-        {
-            get
-            {
-                return _propertyInfo.Setter;
-            }
-        }
+        public Action<TProperty> Setter => _propertyInfo.Setter;
 
-        public Func<TProperty> Getter
-        {
-            get
-            {
-                return _propertyInfo.Getter;
-            }
-        }
+        public Func<TProperty> Getter => _propertyInfo.Getter;
 
         [ContractInvariantMethod]
         private void ObjectInvariant()

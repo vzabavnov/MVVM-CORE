@@ -28,7 +28,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public INotifiable<T> Notifiable { get; private set; }
+        public INotifiable<T> Notifiable { get; }
 
         /// <summary>
         /// </summary>

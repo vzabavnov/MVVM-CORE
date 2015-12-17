@@ -50,10 +50,7 @@ namespace Zabavnov.MVVM
             }
         }
 
-        public PropertyInfo PropertyInfo
-        {
-            get { return _propertyInfo; }
-        }
+        public PropertyInfo PropertyInfo => _propertyInfo;
 
         public IBindableProperty<TControl, TControlProperty> ControlProperty
         {

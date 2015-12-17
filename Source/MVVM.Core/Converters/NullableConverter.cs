@@ -50,7 +50,7 @@ namespace Zabavnov.MVVM
         /// </returns>
         public T ConvertFrom(T? target)
         {
-            return target.HasValue ? target.Value : _defaultValue;
+            return target ?? _defaultValue;
         }
 
         /// <summary>

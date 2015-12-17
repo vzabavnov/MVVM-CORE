@@ -22,13 +22,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        protected override object SyncObject
-        {
-            get
-            {
-                return _syncObject;
-            }
-        }
+        protected override object SyncObject => _syncObject;
 
         #endregion
 

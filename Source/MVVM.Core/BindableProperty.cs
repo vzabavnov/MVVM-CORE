@@ -132,8 +132,7 @@ namespace Zabavnov.MVVM
             _comparer = comparer ?? EqualityComparer<TValueProperty>.Default;
             _eventArg = new PropertyChangedEventArgs(propertyName);
 
-            if(controlNotificationActionSetter != null)
-                controlNotificationActionSetter(control, OnControlPropertyChanged);
+            controlNotificationActionSetter?.Invoke(control, OnControlPropertyChanged);
         }
 
         /// <param name="control">
@@ -168,6 +167,7 @@ namespace Zabavnov.MVVM
         {
             Contract.Requires(control != null);
             Contract.Requires(propertyLambda != null);
+            Contract.Requires(controlNotificationActionSetter != null);
             Contract.Requires(converter != null);
 
             Control = control;
@@ -187,8 +187,7 @@ namespace Zabavnov.MVVM
             _comparer = comparer ?? EqualityComparer<TValueProperty>.Default;
             _eventArg = new PropertyChangedEventArgs(propertyName);
 
-            if(controlNotificationActionSetter != null)
-                controlNotificationActionSetter(control, OnControlPropertyChanged);
+            controlNotificationActionSetter?.Invoke(control, OnControlPropertyChanged);
         }
 
         /// <summary>
@@ -241,19 +240,13 @@ namespace Zabavnov.MVVM
         ///     The property of control is readable
         /// </summary>
         [Pure]
-        public bool CanRead
-        {
-            get { return _getter != null; }
-        }
+        public bool CanRead => this._getter != null;
 
         /// <summary>
         ///     The property of control is writable
         /// </summary>
         [Pure]
-        public bool CanWrite
-        {
-            get { return _setter != null; }
-        }
+        public bool CanWrite => this._setter != null;
 
         /// <summary>
         /// </summary>
@@ -267,7 +260,7 @@ namespace Zabavnov.MVVM
         /// <summary>
         ///     the control that property bound to
         /// </summary>
-        public TControl Control { get; private set; }
+        public TControl Control { get; }
 
         /// <summary>
         ///     use this value when <see cref="BindingMode" /> is equal to default
@@ -333,8 +326,7 @@ namespace Zabavnov.MVVM
             if(_notificationEnabled)
             {
                 PropertyChangedEventHandler handler = PropertyChanged;
-                if(handler != null)
-                    handler(Control, _eventArg);
+                handler?.Invoke(this.Control, this._eventArg);
             }
         }
 

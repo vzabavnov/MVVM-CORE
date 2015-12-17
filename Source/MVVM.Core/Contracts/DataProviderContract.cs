@@ -1,7 +1,7 @@
-﻿using System.Diagnostics.Contracts;
-
-namespace Zabavnov.MVVM
+﻿namespace Zabavnov.MVVM.Contracts
 {
+    using System.Diagnostics.Contracts;
+
     [ContractClassFor(typeof(IDataProvider))]
     internal abstract class DataProviderContract : IDataProvider
     {

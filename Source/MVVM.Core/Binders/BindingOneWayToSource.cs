@@ -26,10 +26,7 @@ namespace Zabavnov.MVVM
         #region Overrides of BindingInfoBase<TModel,TControl,TModelProperty,TControlProperty>
 
         /// <summary/>
-        public override BindingMode Direction
-        {
-            get { return BindingMode.OneWayToSource; }
-        }
+        public override BindingMode Direction => BindingMode.OneWayToSource;
 
         protected override void SetProperty(IBindableProperty<TControl, TControlProperty> property)
         {

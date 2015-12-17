@@ -61,13 +61,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public INotifiable<DataProviderStatus> Status
-        {
-            get
-            {
-                return _status;
-            }
-        }
+        public INotifiable<DataProviderStatus> Status => _status;
 
         #endregion
 

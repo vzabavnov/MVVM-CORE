@@ -1,5 +1,4 @@
 using System.Diagnostics.Contracts;
-using System.Reflection;
 
 namespace Zabavnov.MVVM
 {
@@ -80,54 +79,27 @@ namespace Zabavnov.MVVM
         /// <summary>
         ///     the property ca be read
         /// </summary>
-        public bool CanRead
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public bool CanRead => true;
 
         /// <summary>
         ///     The property can be write
         /// </summary>
-        public bool CanWrite
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public bool CanWrite => true;
 
         /// <summary>
         ///     The control that property bound to
         /// </summary>
-        public TControl Control
-        {
-            get
-            {
-                return _control;
-            }
-        }
+        public TControl Control => _control;
 
         /// <summary>
         ///     The property name
         /// </summary>
-        public string PropertyName
-        {
-            get
-            {
-                return _propertyName;
-            }
-        }
+        public string PropertyName => _propertyName;
 
         /// <summary>
         /// use this value when <see cref="BindingMode"/> is equal to default
         /// </summary>
-        public BindingMode DefaultBindingMode
-        {
-            get { return BindingMode.TwoWay;}
-        }
+        public BindingMode DefaultBindingMode => BindingMode.TwoWay;
 
         /// <summary>
         ///     The value of property
@@ -145,10 +117,7 @@ namespace Zabavnov.MVVM
                 if (!Equals(_value, value))
                 {
                     _value = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs(_propertyName));
-                    }
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(this._propertyName));
                 }
             }
         }

@@ -65,9 +65,9 @@ namespace Zabavnov.MVVM
                     }
                 }
 
-                if (notify && Notify != null)
+                if (notify)
                 {
-                    Notify(new NotifiableEventArgs<T>(this, old));
+                    Notify?.Invoke(new NotifiableEventArgs<T>(this, old));
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace Zabavnov.MVVM
 
         public override string ToString()
         {
-            return string.Format("SimpleNotifiable: {0}", Value);
+            return $"SimpleNotifiable: {Value}";
         }
 
         [ContractInvariantMethod]

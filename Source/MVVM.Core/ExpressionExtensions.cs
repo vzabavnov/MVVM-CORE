@@ -249,7 +249,7 @@ namespace Zabavnov.MVVM
             }
 
             if (expression == null)
-                throw new ArgumentException(String.Format("Expression '{0}' refers to a method, not a property or field.", propertyLambda));
+                throw new ArgumentException($"Expression '{propertyLambda}' refers to a method, not a property or field.");
 
             return expression.Member;
         }
@@ -290,7 +290,8 @@ namespace Zabavnov.MVVM
         public static PropertyInfo GetPropertyInfo<TProperty>(this Expression<Func<TProperty>> propertyLambda)
         {
             var propInfo = GetMemberInfo(propertyLambda) as PropertyInfo;
-            if (propInfo == null) throw new ArgumentException(String.Format("Expression '{0}' refers to a field, not a property.", propertyLambda));
+            if (propInfo == null)
+                throw new ArgumentException($"Expression '{propertyLambda}' refers to a field, not a property.");
 
             return propInfo;
         }
@@ -309,12 +310,12 @@ namespace Zabavnov.MVVM
         {
             var propInfo = GetMemberInfo(propertyLambda) as PropertyInfo;
             if (propInfo == null)
-                throw new ArgumentException(String.Format("Expression '{0}' refers to a field, not a property.", propertyLambda));
+                throw new ArgumentException($"Expression '{propertyLambda}' refers to a field, not a property.");
 
             var type = typeof(TSource);
             if (type.IsSubclassOf(propInfo.ReflectedType) || type.IsAssignableFrom(propInfo.ReflectedType))
                 return propInfo;
-            throw new ArgumentException(String.Format("Expression '{0}' refers to a property that is not from type {1}.", propertyLambda, type));
+            throw new ArgumentException($"Expression '{propertyLambda}' refers to a property that is not from type {type}.");
         }
 
 
@@ -337,7 +338,7 @@ namespace Zabavnov.MVVM
             }
 
             if(expression == null)
-                throw new ArgumentException(String.Format("Expression '{0}' refers to a method, not a property or field.", propertyLambda));
+                throw new ArgumentException($"Expression '{propertyLambda}' refers to a method, not a property or field.");
 
             memberInfo = expression.Member;
             return expression;
@@ -446,13 +447,9 @@ namespace Zabavnov.MVVM
 
                     bindableObjectType = bindableObjectType.BaseType;
                 }
-                if(propChangedFieldInfo == null)
-                    return;
 
                 // get prop changed event field value
-                var fieldValue = propChangedFieldInfo.GetValue(instanse);
-                if(fieldValue == null)
-                    return;
+                var fieldValue = propChangedFieldInfo?.GetValue(instanse);
 
                 var eventDelegate = fieldValue as MulticastDelegate;
                 if(eventDelegate == null)

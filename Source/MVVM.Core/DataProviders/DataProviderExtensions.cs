@@ -11,10 +11,7 @@ namespace Zabavnov.MVVM
         {
             Contract.Requires(provider != null);
 
-            return string.Format("{0}=>{1}", provider.Status,
-                provider.Status.Value == DataProviderStatus.Ready
-                    ? provider.Data.ToString()
-                    : provider.Status.Value == DataProviderStatus.NotReady ? "(Not Ready)" : "(Updating...)");
+            return $"{provider.Status}=>{(provider.Status.Value == DataProviderStatus.Ready ? provider.Data.ToString() : provider.Status.Value == DataProviderStatus.NotReady ? "(Not Ready)" : "(Updating...)")}";
         }
     }
 }

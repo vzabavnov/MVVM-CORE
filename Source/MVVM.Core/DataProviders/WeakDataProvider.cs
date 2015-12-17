@@ -61,7 +61,7 @@ namespace Zabavnov.MVVM
                         _status.Value = DataProviderStatus.NotReady;
                     }
 
-                    T d = _reference.Target;
+                    var d = _reference.Target;
                     _status.Value = DataProviderStatus.Ready;
                     return d;
                 }
@@ -70,13 +70,7 @@ namespace Zabavnov.MVVM
 
         /// <summary>
         /// </summary>
-        public INotifiable<DataProviderStatus> Status
-        {
-            get
-            {
-                return _status;
-            }
-        }
+        public INotifiable<DataProviderStatus> Status => _status;
 
         #endregion
 

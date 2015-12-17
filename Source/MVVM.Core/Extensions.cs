@@ -400,7 +400,7 @@ namespace Zabavnov.MVVM
             T result;
             if(parser(source, out result))
                 return result;
-            throw new FormatException(String.Format("Error parsing value \"{0}\"", source ?? "NULL"));
+            throw new FormatException($"Error parsing value \"{source ?? "NULL"}\"");
         }
 
         /// <summary>
